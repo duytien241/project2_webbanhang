@@ -4,6 +4,9 @@ class Product_item extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidUpdate() {
+        console.log("product-item is created");
+    }
     increaseQuantity() {
         this.props.increase(this.props.index);
     }

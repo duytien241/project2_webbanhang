@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {BrowserRouter,Route,Link} from 'react-router-dom'
+import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import '../styles/category.css';
 import '../styles/category_responsive.css';
 
 import '../styles/responsive.css';
 import '../App.css';
-
+import Home from './Home';
 import DetailProduct from'./DetailProduct';
 
 
@@ -15,6 +15,7 @@ class Product extends Component {
         var img1 = this.props.img;
         var tile ='60%';
         return (
+         
               <div className="col-xl-4 col-md-6 grid-item new">
         <div className="product">
           <div className="product_image"><img src={require(`../images/${this.props.img}`)} alt /></div>
@@ -22,8 +23,8 @@ class Product extends Component {
             <div className="product_info d-flex flex-row align-items-start justify-content-start">
               <div>
                 <div>
-                  <div className="product_name"><a href="product.html">Áo phông mùa hè</a></div>
-                  <div className="product_category">In <a href="category.html">Sản phẩm</a></div>
+                  <div className="product_name"><Link to="/product">{this.props.name}</Link></div>
+                  <div className="product_category">In <a href="category">Sản phẩm</a></div>
                 </div>
               </div>
               
@@ -48,7 +49,7 @@ class Product extends Component {
           </div>
         </div>
       </div>
-    
+      
         );
     }
 }

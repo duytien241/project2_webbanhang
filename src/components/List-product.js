@@ -59,6 +59,13 @@ class List_product extends Component {
             return listProduct;
         }
     }
+    total_cost() {
+        var sum = 0;
+        this.state.Products.map((item) => {
+            sum += item.price*item.quantity;
+        });
+        return sum;
+    }
     render() {
         return (
             <div class="product-cart">

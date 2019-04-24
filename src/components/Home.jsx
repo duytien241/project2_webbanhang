@@ -6,24 +6,43 @@ import Popular from './Popular';
 import Feature from './Feature';
 import Header from './Header.jsx';
 import Footer from './Footer';
+import { isNull } from 'util';
 class Home extends Component {
+    constructor(props){
+
+        super(props);
+        this.state = {
+        products : [["Áo phông mùa hè",250000,"product_1.jpg"],["Áo phông mùa hè",150000,"product_2.jpg"],
+        ["Áo phông mùa hè",250000,"product_3.jpg"],["Áo phông mùa hè",250000,"product_4.jpg"]]
+        };
+      }
+      componentWillMount(){
+        if(localStorage && localStorage.getItem('products')){
+          var products = JSON.parse(localStorage.getItem('products'));
+          this.setState({
+            products : products
+          });
+        }
+      }
+    
     render() {
+        var {products} = this.state;
+        var printElement =products.map((product,index,products) =>{
+            return <Product name={products[index][0]} img = {products[index][2]} price ={products[index][1]}></Product>
+        });
+        
         return (
+            
             <div>
             <Header></Header>
       
             <Slide/>
-            ư
+            
             <Popular/>
             <div className="container">
             
             <div class="row products_row products_container grid">
-                <Product img = {'product_3.jpg'} price ="250000"></Product>
-                <Product img = {'product_1.jpg'} price ="150000"></Product>
-                <Product img = {'product_2.jpg'}price ="200000"></Product>
-                <Product img = {'product_4.jpg'} price ="300000"></Product>
-                <Product img = {'product_5.jpg'} price ="200000"></Product>
-                <Product img = {'product_6.jpg'} price ="150000"></Product>
+                {printElement};
             </div>
             
             <Feature></Feature>
@@ -33,6 +52,7 @@ class Home extends Component {
             </div>  
         
         );
+        
     }
 }
 

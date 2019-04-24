@@ -11,11 +11,7 @@ class DetailProduct extends Component {
     render() {
         return (
             <div>
-            <Header></Header>
-      
             
-            
-            <Popular/>
             <div className="container">
             
             <div className ="row">
@@ -23,11 +19,8 @@ class DetailProduct extends Component {
               <Detail></Detail>
             </div>
             
-            <Feature></Feature>
-            </div>
-            
-            <Footer/>
-            </div>
+           </div>
+           </div>
         );
     }
 }
