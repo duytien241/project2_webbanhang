@@ -7,7 +7,21 @@ import Feature from './Feature';
 import Header from './Header.jsx';
 import Footer from './Footer';
 class Category extends Component {
+    componentWillMount(){
+        if(localStorage && localStorage.getItem('products')){
+          var products = JSON.parse(localStorage.getItem('products'));
+          this.setState({
+            products : products
+          });
+        }
+      }
+      
     render() {
+        var {products} = this.state;
+        var printElement =products.map((product,index,products) =>{
+            return <Product name={products[index][0]} img = {products[index][2]} price ={products[index][1]}></Product>
+        });
+        
         return (
             <div>
             <Header></Header>
@@ -16,9 +30,7 @@ class Category extends Component {
             <div className="container">
             
             <div class="row products_row products_container grid">
-                <Product img = {'product_3.jpg'}></Product>
-                <Product img = {'product_1.jpg'}></Product>
-                <Product img = {'product_2.jpg'}></Product>
+                {printElement}
             </div>
             
             <Feature></Feature>

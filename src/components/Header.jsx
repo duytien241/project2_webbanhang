@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route,Link } from "react-router-dom";
 
 
 class Header extends Component {
@@ -9,12 +10,12 @@ class Header extends Component {
         <div className="header_overlay" />
         <div className="header_content d-flex flex-row align-items-center justify-content-start">
           <div className="logo">
-            <a href="#">
+            <Link to ="/">
               <div className="d-flex flex-row align-items-center justify-content-start">
                 <div><img src={require("../images/logo_1.png")} alt /></div>
                 <div>Thời Trang</div>
               </div>
-            </a>	
+            </Link>	
           </div>
           <div className="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
             {/* Search */}
@@ -27,7 +28,7 @@ class Header extends Component {
             {/* User */}
             <div className="user"><a href="#"><div><img src={require("../images/user.svg")}  alt="https://www.flaticon.com/authors/freepik" /></div></a></div>
             {/* Cart */}
-            <div className="cart"><a href="cart.html"><div><img src={require("../images/cart.svg" )} alt="https://www.flaticon.com/authors/freepik" /></div></a></div>
+            <div className="cart"><Link to="/cart"><div><img src={require("../images/cart.svg" )} alt="https://www.flaticon.com/authors/freepik" /></div></Link></div>
             {/* Phone */}
             <div className="header_phone d-flex flex-row align-items-center justify-content-start">
               <div><div><img src={require("../images/phone.svg")}  alt="https://www.flaticon.com/authors/freepik" /></div></div>

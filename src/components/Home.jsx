@@ -15,6 +15,7 @@ class Home extends Component {
         products : [["Áo phông mùa hè",250000,"product_1.jpg"],["Áo phông mùa hè",150000,"product_2.jpg"],
         ["Áo phông mùa hè",250000,"product_3.jpg"],["Áo phông mùa hè",250000,"product_4.jpg"]]
         };
+        localStorage.setItem('products',JSON.stringify(this.state.products));
       }
       componentWillMount(){
         if(localStorage && localStorage.getItem('products')){

@@ -5,15 +5,12 @@ import {BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import DetailProduct from'./DetailProduct';
 import FormDangKy from './FormDangKy';
 import FormDangnhap from './FormDangnhap';
+import CategoryPage from './CategoryPage';
+import CartPage from './CartPage';
 
 class App extends React.Component {
     constructor(props){
-
         super(props);
-        this.state = {
-        products : [["Áo phông mùa hè",250000,"product_1.jpg"],["Áo phông mùa hè",150000,"product_2.jpg"],
-        ["Áo phông mùa hè",250000,"product_3.jpg"],["Áo phông mùa hè",250000,"product_4.jpg"]]
-        };
       }
       componentWillMount(){
         if(localStorage && localStorage.getItem('products')){
@@ -31,6 +28,8 @@ class App extends React.Component {
          <Switch>
         <Route exact path="/" component ={Home}/>
         <Route exact path="/product" component ={DetailProduct}/>
+        <Route exact path="/category" component ={Category}/>
+        <Route exact path="/cart" component ={CartPage}/>
         </Switch>
         </Router>
         );
