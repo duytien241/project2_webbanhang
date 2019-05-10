@@ -4,6 +4,7 @@ import Header_title from './Header-title';
 import List_product from './List-product';
 import Ship from './ship';
 import Cart_total from './Cart-total';
+import '../styles/style.css';
 class CartPage extends Component {
   constructor(props) {
     super(props);

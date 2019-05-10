@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Product from './Product';
+import Product from './Product.jsx';
 import Slide from './Slide';
 import '../styles/responsive.css';
 import Popular from './Popular';
@@ -7,33 +7,68 @@ import Feature from './Feature';
 import Header from './Header.jsx';
 import Footer from './Footer';
 import { isNull } from 'util';
+import axios from 'axios';
 class Home extends Component {
-    constructor(props){
+    constructor(props) {
 
         super(props);
         this.state = {
-        products : [["Áo phông mùa hè",250000,"product_1.jpg"],["Áo phông mùa hè",150000,"product_2.jpg"],
-        ["Áo phông mùa hè",250000,"product_3.jpg"],["Áo phông mùa hè",250000,"product_4.jpg"]]
-        };
-        localStorage.setItem('products',JSON.stringify(this.state.products));
-      }
-      componentWillMount(){
-        if(localStorage && localStorage.getItem('products')){
-          var products = JSON.parse(localStorage.getItem('products'));
-          this.setState({
-            products : products
-          });
+            products: [],
+            images: []
         }
-      }
-    
+    }
+    componentWillMount() {
+        fetch('/api/v1/products')
+            .then(response => {
+                return response.json();
+            })
+            .then(res => {
+
+                this.setState({
+                    products: res
+                });
+            }).catch(err => {
+                console.log('A');
+            });
+        fetch('/api/v1/images')
+            .then(response => {
+                return response.json();
+            })
+            .then(res => {
+                this.setState({
+                    images: res
+                })
+            }).catch(err => {
+                console.log('A');
+            });
+    };
+
+
     render() {
-        var {products} = this.state;
-        var printElement =products.map((product,index,products) =>{
-            return <Product name={products[index][0]} img = {products[index][2]} price ={products[index][1]}></Product>
+        var { products } = this.state;
+        var { images } = this.state;
+
+        function getImage(proID) {
+            for (let i = 0; i < images.length; i++) {
+                if (images[i].id == proID) {
+
+                    return images[i].url.toString();
+                }
+            }
+
+        }
+
+        var printElement = products.map((product, index, products) => {
+            return <Product 
+            id = {products[index].id}
+            name = { products[index].proName }
+            img = { getImage(products[index].proID) }
+            price = { products[index].price }
+            desc = { products[index].descriptions } > < /Product>
         });
-        
+
         return (
-            
+
             <div>
             <Header></Header>
       
@@ -50,11 +85,10 @@ class Home extends Component {
             </div>
            
             <Footer/>
-            </div>  
-        
+            </div> 
+
         );
-        
+
     }
 }
-
 export default Home;

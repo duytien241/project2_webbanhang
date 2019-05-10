@@ -11,19 +11,21 @@ import DetailProduct from'./DetailProduct';
 
 class Product extends Component {
     render() {
-
-        var img1 = this.props.img;
+        
+        const img1 = this.props.img;
+        var {id} = this.props;
         var tile ='60%';
+        
         return (
          
               <div className="col-xl-4 col-md-6 grid-item new">
         <div className="product">
-          <div className="product_image"><img src={require(`../images/${this.props.img}`)} alt /></div>
+          <div className="product_image"><img src={img1} alt /></div>
           <div className="product_content">
             <div className="product_info d-flex flex-row align-items-start justify-content-start">
               <div>
                 <div>
-                  <div className="product_name"><Link to="/product">{this.props.name}</Link></div>
+                  <div className="product_name"><Link to={`/product/${id}`}>{this.props.name}</Link></div>
                   <div className="product_category">In <a href="category">Sản phẩm</a></div>
                 </div>
               </div>

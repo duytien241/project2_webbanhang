@@ -25,7 +25,7 @@ class Category extends Component {
         return (
             <div>
             <Header></Header>
-            <CategoryPage/>
+            <CategoryPage title = "Category Page"/>
             <Filter/>
             <div className="container">
             

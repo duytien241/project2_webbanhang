@@ -6,28 +6,21 @@ import DetailProduct from'./DetailProduct';
 import FormDangKy from './FormDangKy';
 import FormDangnhap from './FormDangnhap';
 import CategoryPage from './CategoryPage';
-import CartPage from './CartPage';
+import CartPage from './cart/Cart_page';
+import axios from 'axios';
 
 class App extends React.Component {
     constructor(props){
         super(props);
       }
-      componentWillMount(){
-        if(localStorage && localStorage.getItem('products')){
-          var products = JSON.parse(localStorage.getItem('products'));
-          this.setState({
-            products : products
-          });
-        }
-      }
-     
+  
     render() {
-       
+      
        return ( 
        <Router>
          <Switch>
         <Route exact path="/" component ={Home}/>
-        <Route exact path="/product" component ={DetailProduct}/>
+        <Route path="/product/:id" component ={DetailProduct}/>
         <Route exact path="/category" component ={Category}/>
         <Route exact path="/cart" component ={CartPage}/>
         </Switch>
