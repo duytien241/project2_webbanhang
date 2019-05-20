@@ -23,6 +23,37 @@
 
 
     <div id="root"></div>
+    <script>
+    $("#info-button").on("click", event =>{
+	$(".acc-info").attr("style", "position: relative; visibility: visible;")
+	$('.acc-edit').attr("style", "position: absolute; visibility: hidden;")
+	$('.acc-pass').attr("style", "position: absolute; visibility: hidden;")
+	$('#info-button').attr("class", "list-group-item list-group-item-action list-group-item-light active")
+	$('#edit-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+	$('#passwd-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+
+})
+
+$('#edit-button').on("click", event =>{
+	$('.acc-info').attr("style", "position: absolute; visibility: hidden;")
+	$('.acc-edit').attr("style", "position: relative; visibility: visible;")
+	$('.acc-pass').attr("style", "position: absolute; visibility: hidden;")
+	$('#info-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+	$('#edit-button').attr("class", "list-group-item list-group-item-action list-group-item-light active")
+	$('#passwd-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+
+})
+
+$('#passwd-button').on("click", event =>{
+	$('.acc-info').attr("style", "position: absolute; visibility: hidden;")
+	$('.acc-edit').attr("style", "position: absolute; visibility: hidden;")
+	$('.acc-pass').attr("style", "position: relative; visibility: visible;")
+	$('#info-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+	$('#edit-button').attr("class", "list-group-item list-group-item-action list-group-item-light")
+	$('#passwd-button').attr("class", "list-group-item list-group-item-action list-group-item-light active")
+
+})
+    </script>
     <script src="%PUBLIC_URL%/js/jquery.min.js"></script>
     <script src="%PUBLIC_URL%/js/bootstrap.min.js"></script>
     <script src="%PUBLIC_URL%/OwlCarousel2-2.2.1/owl.carousel.js"></script>

@@ -31,6 +31,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * The type User.
@@ -61,6 +62,7 @@ public class Product {
 	public long getId() {
 		return proID;
 	}
+	
 	public void setId(int id) {
 		this.proID = id;
 	}

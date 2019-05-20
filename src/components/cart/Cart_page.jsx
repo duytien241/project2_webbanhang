@@ -3,7 +3,7 @@ import Home from './Home.jsx';
 import Cart from './cart.jsx';
 import Header from '../Header'
 import Footer from '../Footer';
-
+import '../../styles/cart.css';
 class Cart_page extends React.Component {
     render() {
         return (

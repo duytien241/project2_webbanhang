@@ -36,4 +36,16 @@ public class ImageController {
 	  public Images createUser(@Valid @RequestBody Images img) {
 	    return imgRepository.save(img);
 	  }
+	 @DeleteMapping("/images/{id}")
+	  public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long proId) throws Exception {
+	    Images img =
+	        imgRepository
+	            .findById(proId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Product not found on :: " + proId));
+
+	    imgRepository.delete(img);
+	    Map<String, Boolean> response = new HashMap<>();
+	    response.put("deleted", Boolean.TRUE);
+	    return response;
+	  }
 }

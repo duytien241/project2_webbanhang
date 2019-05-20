@@ -4,6 +4,10 @@ import {BrowserRouter as Router, Route,Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
+    var accID = -1;
+    if(localStorage.getItem("accID") != null){
+      accID = localStorage.getItem("accID");
+    }
     return (
 
       <header className="header">
@@ -22,11 +26,11 @@ class Header extends Component {
             <div className="header_search">
               <form action="#" id="header_search_form">
                 <input type="text" className="search_input" placeholder="Tìm kiếm sản phẩm" required="required" />
-                <button className="header_search_button"><img src={require("../images/search.png")}  alt /></button>
+                <button className="header_search_button"> </button>
               </form>
             </div>
             {/* User */}
-            <div className="user"><a href="#"><div><img src={require("../images/user.svg")}  alt="https://www.flaticon.com/authors/freepik" /></div></a></div>
+            <div className="user"><Link to={accID == -1 ?"/singup" : "/detailuser"}><div><img src={require("../images/user.svg")}  alt="https://www.flaticon.com/authors/freepik" /></div></Link></div>
             {/* Cart */}
             <div className="cart"><Link to="/cart"><div><img src={require("../images/cart.svg" )} alt="https://www.flaticon.com/authors/freepik" /></div></Link></div>
             {/* Phone */}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Dangnhap from './Dangnhap';
 import Header from './Header.jsx';
 import Footer from './Footer';
-
+import Login from './login.jsx';
 class FormDangnhap extends Component {
     render() {
         return (
@@ -10,7 +10,7 @@ class FormDangnhap extends Component {
                 <Header/>
                 <br/>
                 <br/><br/><br/><br/>
-                <Dangnhap/>
+                <Login/>
                 <Footer/>
             </div>
         );

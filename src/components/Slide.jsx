@@ -21,7 +21,7 @@ class Slide extends Component {
           <div className="owl-carousel owl-theme home_slider">
             {/* Slide */}
             <div className="owl-item">
-              <div className="background_image" style={{backgroundImage:"url(" + img+ ")"}} />
+              <div className="background_image" style={{backgroundImage: 'url("../images/sign_up/bg-registration-form-1.jpg")'}} />
               <div className="container fill_height">
                 <div className="row fill_height">
                   <div className="col fill_height">
@@ -32,7 +32,7 @@ class Slide extends Component {
                         <div className="home_items">
                           <div className="row">
                             <div className="col-sm-3 offset-lg-1">
-                              <div className="home_item_side"><a href="product.html"><img src="images/home_1.jpg" alt /></a></div>
+                              <div className="home_item_side"><a href="product.html"><img src="/images/home_1.jpg" alt /></a></div>
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
                               <div className="product home_item_large">

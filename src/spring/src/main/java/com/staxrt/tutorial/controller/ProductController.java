@@ -61,13 +61,13 @@ public class ProductController {
 	  return ResponseEntity.ok().body(pro);
   }
   @PostMapping("/products")
-  public Product createUser(@Valid @RequestBody Product product) {
+  public Product createUser(@Valid  Product product) {
     return proRepository.save(product);
   }
-  @PutMapping("/users/{id}")
-  public ResponseEntity<Product> updateUser(@PathVariable(value = "id") Long proId, @Valid @RequestBody Product proDetails)
+  @PutMapping("/products/{id}")
+  public ResponseEntity<Product> updateUser(@PathVariable(value = "id") Long proId, @Valid Product proDetails)
       throws ResourceNotFoundException {
-
+	  
 	  Product product =
         proRepository
             .findById(proId)
@@ -80,7 +80,7 @@ public class ProductController {
 	  final Product productUpdate = proRepository.save(product);
 	  return ResponseEntity.ok(productUpdate);
   }
-  @DeleteMapping("/product/{id}")
+  @DeleteMapping("/products/{id}")
   public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long proId) throws Exception {
     Product user =
         proRepository

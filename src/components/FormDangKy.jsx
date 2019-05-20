@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Dangky from './dangky';
 import Header from './Header.jsx';
 import Footer from './Footer';
+import login from './login.jsx';
+import Singup from './singup.jsx';
 
 class FormDangKy extends Component {
     render() {
@@ -10,7 +11,7 @@ class FormDangKy extends Component {
                 <Header/>
                 <br/>
                 <br/><br/><br/><br/>
-                <Dangky/>
+                <Singup/>
                 <Footer/>
             </div>
         );
