@@ -61,11 +61,11 @@ public class ProductController {
 	  return ResponseEntity.ok().body(pro);
   }
   @PostMapping("/products")
-  public Product createUser(@Valid  Product product) {
+  public Product createUser(@Valid @RequestBody Product product) {
     return proRepository.save(product);
   }
   @PutMapping("/products/{id}")
-  public ResponseEntity<Product> updateUser(@PathVariable(value = "id") Long proId, @Valid Product proDetails)
+  public ResponseEntity<Product> updateUser(@PathVariable(value = "id") Long proId, @Valid @RequestBody Product proDetails)
       throws ResourceNotFoundException {
 	  
 	  Product product =

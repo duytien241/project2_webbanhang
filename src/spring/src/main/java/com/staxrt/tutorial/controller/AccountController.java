@@ -1,12 +1,15 @@
 package com.staxrt.tutorial.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,21 +30,21 @@ public class AccountController {
 	
 	@Autowired
 	AccountRepository accRepository;
-	@GetMapping("/accounts")
+	@GetMapping("/account")
 	public List<Account> getAllAccount(){
 		return accRepository.findAll();
 	}
-	@GetMapping("/accounts/{id}")
+	@GetMapping("/account/{id}")
 	 public ResponseEntity<Optional<Account>> getAccountByID(@PathVariable(value = "id") Integer proID) {
 		  Optional<Account> pro =accRepository.findById(proID);
 		  return ResponseEntity.ok().body(pro);
 	 }
 	@PostMapping("/account")
-	 public Account createUser(@Valid  Account acc) {
+	 public Account createUser(@Valid @RequestBody Account acc) {
 	    return accRepository.save(acc);
 	 }
 	@PutMapping("/account/{id}")
-	  public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") Integer accID, @Valid  Account accDetails)
+	  public ResponseEntity<Account> updateAccount(@PathVariable(value = "id") Integer accID, @Valid @RequestBody Account accDetails)
 	      throws ResourceNotFoundException {
 		  
 		  Account acc =
@@ -54,9 +57,22 @@ public class AccountController {
 		  acc.setPhone(accDetails.getPhone());
 		  acc.setAddress(accDetails.getAddress());
 		  acc.setCreated(accDetails.getCreated());
-		  acc.setAdmin(accDetails.getAdmin());
+		  acc.setEmail(accDetails.getEmail());
+		  acc.setGender(accDetails.getGender());
 		  
 		  final Account accUpdate = accRepository.save(acc);
 		  return ResponseEntity.ok(accUpdate);
+	  }
+	@DeleteMapping("/account/{id}")
+	  public Map<String, Boolean> deleteAccount(@PathVariable(value = "id") Integer accId) throws Exception {
+	    Account account =
+	        accRepository
+	            .findById(accId)
+	            .orElseThrow(() -> new ResourceNotFoundException("Account not found on :: " + accId));
+
+	    accRepository.delete(account);
+	    Map<String, Boolean> response = new HashMap<>();
+	    response.put("deleted", Boolean.TRUE);
+	    return response;
 	  }
 }
