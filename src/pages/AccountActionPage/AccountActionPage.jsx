@@ -20,8 +20,9 @@ class AccountActionPage extends Component {
 	}
 	componentDidMount(){
 		var {match} = this.props;
-		if(match){
-			var id = match.params.id;
+		var id = match.params.id;
+		if(id){
+			
 			callApi("account/" + id, 'GET', null).then(res => {
 				var data = res.data;
 				this.setState({
@@ -210,7 +211,7 @@ class AccountActionPage extends Component {
 	                        	</td>
 	                        	<td>
                      			<button type="submit" className="btn btn-primary">Lưu  lại</button>&nbsp;                     			
-                     			<button type="button" className="btn btn-danger"> <Link to="/account-list" className="btn btn-danger">Trở về</Link></button>
+                     			<button type="button" className="btn btn-danger"> <Link to="/admin/account-list" className="btn btn-danger">Trở về</Link></button>
                      			</td>                     			    
                  			</tr>
                  		</table>

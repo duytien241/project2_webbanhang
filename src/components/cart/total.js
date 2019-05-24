@@ -10,15 +10,15 @@ class Total extends React.Component {
                         <ul className="cart_extra_total_list">
                             <li className="d-flex flex-row align-items-center justify-content-start">
                                 <div className="cart_extra_total_title">Subtotal</div>
-                                <div className="cart_extra_total_value ml-auto">$29.90</div>
+                                <div className="cart_extra_total_value ml-auto">${this.props.cartCost}</div>
                             </li>
                             <li className="d-flex flex-row align-items-center justify-content-start">
                                 <div className="cart_extra_total_title">Shipping</div>
-                                <div className="cart_extra_total_value ml-auto">Free</div>
+                                <div className="cart_extra_total_value ml-auto">${this.props.shipCost}</div>
                             </li>
                             <li className="d-flex flex-row align-items-center justify-content-start">
                                 <div className="cart_extra_total_title">Total</div>
-                                <div className="cart_extra_total_value ml-auto">$29.90</div>
+                                <div className="cart_extra_total_value ml-auto">${Number(this.props.cartCost) + Number(this.props.shipCost)}</div>
                             </li>
                         </ul>
                         <div className="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>

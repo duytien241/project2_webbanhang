@@ -46,7 +46,7 @@ class DetailProduct extends Component {
         var imgurl;
         var {images} = this.state;
         for( let i = 0 ; i < images.length; i++){
-            if(images[i].id==this.props.match.params.id){
+            if(images[i].proID==this.props.match.params.id){
                 imgurl = images[i].url;
                 console.log(imgurl);
             }

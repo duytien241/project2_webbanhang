@@ -47,7 +47,7 @@ public class Product {
 	@Id
 	@Column(name = "proID", nullable = false)
 	private long proID;
-	@Column(name = "name", nullable = false)
+	@Column(name = "name")
 	private String proName;
 	@Column(name = "price", nullable = false)
 	private long price;
@@ -59,6 +59,8 @@ public class Product {
 	private String material;
 	@Column(name = "gender", nullable = false)
 	private String gender;
+	@Column(name = "companyID",nullable = false)
+	private String companyID;
 	public long getId() {
 		return proID;
 	}
@@ -107,5 +109,13 @@ public class Product {
 	}
 	public void setProID(long proID) {
 		this.proID = proID;
+	}
+
+	public String getCompanyID() {
+		return companyID;
+	}
+
+	public void setCompanyID(String companyID) {
+		this.companyID = companyID;
 	}
 }

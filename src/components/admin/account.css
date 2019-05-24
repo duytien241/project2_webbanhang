@@ -1,0 +1,60 @@
+.headerAdmin {
+	background-color: red;
+	text-align: center;
+	width: 100%;
+	height: 80px;
+}
+.navbarAdmin {
+	width: 240px;
+    height: 100%;
+    position: absolute;
+    background: pink;
+    text-align: center;
+}
+.main-content {
+	margin-left: 240px;
+}
+.wrapper {
+	display: inline-block;
+    padding: 15px;
+    width: 100%;
+}
+.table thead tr th{
+	background-color: #1223;
+	text-align: center;
+	vertical-align: middle;
+}
+.table tbody tr td{
+	vertical-align: middle;
+
+}
+.table tbody tr:nth-child(even) {background-color: #f2f2f2;}
+	
+
+.wrapper-btn .btn {
+	padding: auto;
+	position: relative;
+	width: 45px;
+	height: 35px;
+}
+.account ,h2 {
+	text-align: center;
+}
+.table {
+	width: 100%;
+	padding: auto;
+}
+.wrapper-btn {
+	display: flex;
+	margin: 10px;
+}
+.wrapper-btn button{
+	margin: 5px;
+}
+#btnAM {
+	position: relative;
+	width: 100%;
+	
+}
+
+

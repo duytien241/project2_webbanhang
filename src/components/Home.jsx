@@ -50,8 +50,8 @@ class Home extends Component {
 
         function getImage(proID) {
             for (let i = 0; i < images.length; i++) {
-                if (images[i].id == proID) {
-
+                   
+                if (images[i].proID == proID) {
                     return images[i].url.toString();
                 }
             }
@@ -60,7 +60,7 @@ class Home extends Component {
 
         var printElement = products.map((product, index, products) => {
             return <Product 
-            id = {products[index].id}
+            id = {products[index].proID}
             name = { products[index].proName }
             img = { getImage(products[index].proID) }
             price = { products[index].price }

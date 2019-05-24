@@ -3,11 +3,18 @@ import {BrowserRouter as Router, Route,Link } from "react-router-dom";
 
 
 class Header extends Component {
+  timkiem = ()=>{
+    var key = document.getElementById("timkiem").value;
+    localStorage.setItem('key',key);
+    console.log(key);
+    window.location= "/category";
+  }
   render() {
     var accID = -1;
     if(localStorage.getItem("accID") != null){
       accID = localStorage.getItem("accID");
     }
+    
     return (
 
       <header className="header">
@@ -24,9 +31,9 @@ class Header extends Component {
           <div className="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
             {/* Search */}
             <div className="header_search">
-              <form action="#" id="header_search_form">
-                <input type="text" className="search_input" placeholder="Tìm kiếm sản phẩm" required="required" />
-                <button className="header_search_button"> </button>
+              <form action="/category"  id="header_search_form">
+                <input type="text" className="search_input" id="timkiem" placeholder="Tìm kiếm sản phẩm" required="required" />
+                <button className="header_search_button" onClick = {this.timkiem}> </button>
               </form>
             </div>
             {/* User */}

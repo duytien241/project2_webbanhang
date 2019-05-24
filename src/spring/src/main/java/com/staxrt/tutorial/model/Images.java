@@ -22,8 +22,11 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public class Images {
 	@Id
-	@Column(name = "proID", nullable = false)
+	@Column(name = "id", nullable = false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "proID", nullable = false)
+	private Long proID;
 	@Column(name ="url",nullable = false)
 	private String url;
 	public Long getId() {
@@ -37,5 +40,11 @@ public class Images {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public Long getProID() {
+		return proID;
+	}
+	public void setProID(Long proID) {
+		this.proID = proID;
 	}
 }

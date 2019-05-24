@@ -1,6 +1,7 @@
 package com.staxrt.tutorial.controller;
 import com.staxrt.tutorial.exception.ResourceNotFoundException;
 import com.staxrt.tutorial.model.Images;
+import com.staxrt.tutorial.model.Product;
 import com.staxrt.tutorial.model.SizeProduct;
 
 import com.staxrt.tutorial.repository.ImageRepository;
@@ -26,5 +27,13 @@ public class SizeController {
 	 @GetMapping("/size")
 	 public List<SizeProduct> getAllUsers() {
 	    return sizeRepository.findAll();
+	  }
+	 @DeleteMapping("/size/{id}")
+	  public Map<String, Boolean> deleteSize(@PathVariable(value = "id") Long proId) throws Exception {
+	    
+	    sizeRepository.deleteByProID(proId);
+	    Map<String, Boolean> response = new HashMap<>();
+	    response.put("deleted", Boolean.TRUE);
+	    return response;
 	  }
 }

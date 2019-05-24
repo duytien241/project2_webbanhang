@@ -38,12 +38,8 @@ public class ImageController {
 	  }
 	 @DeleteMapping("/images/{id}")
 	  public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long proId) throws Exception {
-	    Images img =
-	        imgRepository
-	            .findById(proId)
-	            .orElseThrow(() -> new ResourceNotFoundException("Product not found on :: " + proId));
-
-	    imgRepository.delete(img);
+	    
+	    imgRepository.deleteByProID(proId);
 	    Map<String, Boolean> response = new HashMap<>();
 	    response.put("deleted", Boolean.TRUE);
 	    return response;

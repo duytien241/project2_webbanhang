@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../styles/info.css';
 import Header from './Header';
 import Footer from './Footer';
+import {Link} from 'react-router-dom';
 export default class DetailUser extends Component {
   constructor(props){
 
@@ -24,7 +25,7 @@ dangxuat = ()=>{
   window.location = "/";
 }
   componentWillMount() {
-    fetch('/api/v1/accounts/' + localStorage.getItem("accID"))
+    fetch('/api/v1/account/' + localStorage.getItem("accID"))
         .then(response => {
             return response.json();
         })
@@ -37,9 +38,17 @@ dangxuat = ()=>{
             console.log('A');
         });
 };
+printAdmin = ()=>{
+  if(this.state.accounts.admin){
+    window.location = "/admin/listproduct";
+  }
+  else 
+    alert ("Bạn không phải admin");
+};
   render() {
     
   var {accounts} = this.state;
+  
   console.log(accounts);
     return (
       <div>
@@ -66,6 +75,8 @@ dangxuat = ()=>{
                     <a className="list-group-item list-group-item-action list-group-item-light active" id="info-button" style={{cursor: 'pointer'}}>Thông tin tài khoản</a>
                     <a className="list-group-item list-group-item-action list-group-item-light" id="edit-button" style={{cursor: 'pointer'}}>Chỉnh sửa thông tin</a>
                     <a className="list-group-item list-group-item-action list-group-item-light" id="passwd-button" style={{cursor: 'pointer'}}>Đổi mật khẩu</a>
+                    <button type="button" className="btn list-group-item list-group-item-action list-group-item-light" onClick ={this.dangxuat}>Đăng xuất</button>
+                    <button type="button" className="btn list-group-item list-group-item-action list-group-item-light" onClick ={this.printAdmin}>Quản lý</button>
                   </div>
                 </div>
               </div>
@@ -141,7 +152,7 @@ dangxuat = ()=>{
                     <div className="checkout_button trans_200" name="passwd" id="passwd"><a style={{color: 'white', cursor: 'pointer'}}>Cập nhật</a></div>	
                   </div>
                   
-                  <button type="button" class="btn btn-primary disabled" onClick ={this.dangxuat}>Đăng xuất</button>
+                  
                   
                 </div>
                 

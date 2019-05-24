@@ -1,6 +1,57 @@
 import React from 'react';
 
 class Ship extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            shipWays: [
+                {
+                    name: "Next day delivery",
+                    cost: 4.99,
+                    ischecked: false
+                },
+                {
+                    name: "Standard delivery",
+                    cost: 1.99,
+                    ischecked: false
+                },
+                {
+                    name: "Personal Pickup",
+                    cost: 0,
+                    ischecked: false
+                }
+            ]
+        }
+    }
+    handleCheckBox(id) {
+        var arrShipway = this.state.shipWays;
+        arrShipway[id].ischecked = !arrShipway[id].ischecked;
+        this.setState({ shipWays: arrShipway });
+        this.props.updateShipCost(this.ship_cost());
+    }
+    show_shipway = () => {
+        const listShip = this.state.shipWays.map((way, index) => {
+            return (
+                <li className="shipping_option d-flex flex-row align-items-center justify-content-start">
+                    <label className="radio_container">
+                    {(way.ischecked) ? <input onChange={() => this.handleCheckBox(index)} type="radio" id="radio_2" name="shipping_radio" className="shipping_radio" defaultChecked/>
+                    :<input onChange={() => this.handleCheckBox(index)} type="radio" id="radio_2" name="shipping_radio" className="shipping_radio" />}
+                        <span className="radio_mark" />
+                        <span className="radio_text">{way.name}</span>
+                    </label>
+                    <div className="shipping_price ml-auto">${way.cost}</div>
+                </li>
+            );
+        })
+        return listShip;
+    }
+    ship_cost() {
+        var shipCost = 0;
+        this.state.shipWays.map((way) => {
+            shipCost += way.cost;
+        });
+        return shipCost;
+    }
     render() {
         return (
             <div className="col-lg-6">
@@ -17,30 +68,8 @@ class Ship extends React.Component {
                         <div className="shipping">
                             <div className="cart_extra_title">Shipping Method</div>
                             <ul>
-                                <li className="shipping_option d-flex flex-row align-items-center justify-content-start">
-                                    <label className="radio_container">
-                                        <input type="radio" id="radio_1" name="shipping_radio" className="shipping_radio" />
-                                        <span className="radio_mark" />
-                                        <span className="radio_text">Next day delivery</span>
-                                    </label>
-                                    <div className="shipping_price ml-auto">$4.99</div>
-                                </li>
-                                <li className="shipping_option d-flex flex-row align-items-center justify-content-start">
-                                    <label className="radio_container">
-                                        <input type="radio" id="radio_2" name="shipping_radio" className="shipping_radio" />
-                                        <span className="radio_mark" />
-                                        <span className="radio_text">Standard delivery</span>
-                                    </label>
-                                    <div className="shipping_price ml-auto">$1.99</div>
-                                </li>
-                                <li className="shipping_option d-flex flex-row align-items-center justify-content-start">
-                                    <label className="radio_container">
-                                        <input type="radio" id="radio_3" name="shipping_radio" className="shipping_radio" defaultChecked />
-                                        <span className="radio_mark" />
-                                        <span className="radio_text">Personal Pickup</span>
-                                    </label>
-                                    <div className="shipping_price ml-auto">Free</div>
-                                </li>
+                                {this.show_shipway()};
+                                {this.props.updateCartCost}
                             </ul>
                         </div>
                     </div>

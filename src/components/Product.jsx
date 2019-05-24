@@ -10,10 +10,15 @@ import DetailProduct from'./DetailProduct';
 
 
 class Product extends Component {
-    render() {
+  addCard=() =>{
+    alert("Thành công");
+
+  }  
+  render() {
         
         const img1 = this.props.img;
         var {id} = this.props;
+        
         var tile ='60%';
         
         return (
@@ -44,7 +49,7 @@ class Product extends Component {
                   </div>  
                   <div className="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">  
                     <div>   
-                      <div><img src={require("../images/cart.svg")} className="svg" alt name="cart" />    
+                      <div><img src={require("../images/cart.svg")} className="svg" alt name="cart" onClick = {this.addCard}/>    
                         <div>+</div>    
                       </div>  
                     </div>  

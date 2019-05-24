@@ -38,12 +38,12 @@ kiemtra = ()=>{
   }
 }
 componentWillMount() {
-    fetch('/api/v1/accounts')
+    fetch('/api/v1/account')
         .then(response => {
             return response.json();
         })
         .then(res => {
-
+            console.log(res);
             this.setState({
                 accounts: res
             });

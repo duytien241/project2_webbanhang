@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import './../../components/AdminPage/account.css';
-import AccountList from './../../components/AdminPage/AccountList/AccountList.jsx';
-import AccountItem from './../../components/AdminPage/AccountItem/AccountItem.jsx';
+import './../../components/admin/account.css';
+import AccountList from './../../components/admin/AccountList/AccountList.jsx';
+import AccountItem from './../../components/admin/AccountItem/AccountItem.jsx';
 import {connect} from 'react-redux';
 import callApi from './../../utils/apiCaller.js';
 import {Link} from 'react-router-dom';
+import AdminPage from '../../components/admin/Adminpage';
 
 class AccountManagerPage extends Component {
 	constructor(props){
@@ -56,16 +57,24 @@ class AccountManagerPage extends Component {
 		
 		
 		return (		
-			<div className = "account">
+			<div>
+				<AdminPage/>
+				<section id="main-content">
+                <section className="wrapper">
+				<div className = "account">
 	    	 	<h2>Danh sách tài khoản</h2>
-	    		<Link to="/account/add" class="btn btn-info">Thêm tài khoản</Link>   
+	    		
 	    		<hr/>      			
 				<AccountList>
 
 					{this.showAccounts(accounts)}
 
 				</AccountList>
-			</div>				
+				</div>	
+				</section>
+				</section>
+						
+			</div>
 		);
 		
 	}
